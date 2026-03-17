@@ -1,0 +1,5 @@
+{
+  "tick_seconds": 1,
+  "location": { "latitude": 43.6150, "longitude": -116.2023 },
+  "weather_refresh_seconds": 300
+}
