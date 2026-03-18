@@ -1,7 +1,6 @@
 {
   "clock": {
-    "font_size": 72,
-    "show_seconds": false
+    "font_size": 72
   },
   "weather": {
     "enabled": true,
