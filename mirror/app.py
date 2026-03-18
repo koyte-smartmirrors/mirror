@@ -1,6 +1,7 @@
 import pygame
 import sys
 import json
+import os
 
 from state import MirrorState
 
@@ -12,10 +13,13 @@ FPS = 30
 
 
 # ============================================================
-# Load configuration from config.json
+# Load configuration (always relative to this file)
 # ============================================================
 def load_config():
-    with open("config.json", "r") as f:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    config_path = os.path.join(base_dir, "config.json")
+
+    with open(config_path, "r") as f:
         return json.load(f)
 
 
@@ -36,7 +40,7 @@ class MirrorApp:
         )
         pygame.display.set_caption("Smart Mirror")
 
-        # Hide mouse cursor (mirror-style UI)
+        # Hide mouse cursor (mirror UI)
         pygame.mouse.set_visible(False)
 
         # ----------------------------------------------------
@@ -45,7 +49,7 @@ class MirrorApp:
         self.clock = pygame.time.Clock()
 
         # ----------------------------------------------------
-        # Load config + app state
+        # Load config + initialize state
         # ----------------------------------------------------
         config = load_config()
         self.state = MirrorState(config)
@@ -68,7 +72,6 @@ class MirrorApp:
                 self.clock.tick(FPS)
 
         except KeyboardInterrupt:
-            # Allows clean exit via Ctrl+C over SSH
             print("⌨️  Keyboard interrupt received")
 
         finally:
@@ -83,11 +86,11 @@ class MirrorApp:
                 self.running = False
 
             elif event.type == pygame.KEYDOWN:
-                # Development exit keys
+                # Dev exit keys
                 if event.key in (pygame.K_ESCAPE, pygame.K_q):
                     self.running = False
 
-            # Forward events to state if supported
+            # Forward events to state if implemented
             if hasattr(self.state, "handle_event"):
                 self.state.handle_event(event)
 
@@ -106,3 +109,4 @@ class MirrorApp:
 if __name__ == "__main__":
     app = MirrorApp()
     app.run()
+``
