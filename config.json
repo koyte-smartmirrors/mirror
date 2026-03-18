@@ -1,0 +1,17 @@
+{
+  "screen": {
+    "width": 480,
+    "height": 320,
+    "fps": 30
+  },
+
+  "clock": {
+    "format": "%H:%M:%S",
+    "font_size": 64
+  },
+
+  "colors": {
+    "background": [0, 0, 0],
+    "text": [255, 255, 255]
+  }
+}
