@@ -4,7 +4,6 @@ from datetime import datetime
 from weather import WeatherWidget
 
 
-
 class MirrorState:
     def __init__(self, config):
         self.config = config
@@ -29,10 +28,10 @@ class MirrorState:
         self.date_text = ""
 
         # -----------------
-        # Widgets
+        # Weather widget
         # -----------------
         self.weather = WeatherWidget(config)
-        
+
     def update(self):
         now = datetime.now()
 
@@ -40,7 +39,6 @@ class MirrorState:
         self.date_text = now.strftime("%A, %b %d")
 
         self.weather.update()
-        
 
     def draw(self, screen):
         screen.fill(self.bg_color)
@@ -71,4 +69,3 @@ class MirrorState:
         # Weather (top-left)
         # -----------------
         self.weather.draw(screen)
-        
