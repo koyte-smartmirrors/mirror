@@ -2,7 +2,7 @@ import pygame
 from datetime import datetime
 
 from weather import WeatherWidget
-from news import NewsWidget
+
 
 
 class MirrorState:
