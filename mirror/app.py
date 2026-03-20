@@ -23,7 +23,11 @@ class MirrorApp:
         pygame.init()
         pygame.font.init()
 
-        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        # Fullscreen display (safe)
+        self.screen = pygame.display.set_mode(
+            (WIDTH, HEIGHT),
+            pygame.FULLSCREEN
+        )
         pygame.display.set_caption("Smart Mirror")
 
         pygame.mouse.set_visible(False)
