@@ -11,7 +11,7 @@
     "update_interval": 600
   },
   "colors": {
-    "text": [255, 255, 255],
+    "text": [0, 0, 0],
     "background": [192, 192, 192],
   }
 }
